@@ -21,3 +21,11 @@ export const nestedAddTode =(todo)=>({
     type: types.NESTEDADD_TODO,
     payload : todo,
 });
+export const nestedRemoveTode =(todo)=>({
+    type: types.NESTEDREMOVE_TODO,
+    payload : todo,
+});
+export const nestedUpdateTode =(todo)=>({
+    type: types.NESTEDUPDATE_TODO,
+    payload : todo,
+});
