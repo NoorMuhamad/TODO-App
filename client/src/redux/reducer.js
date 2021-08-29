@@ -47,28 +47,20 @@ const todosReducer = (state = initialState, action) => {
         ...state,
         todos:nup
       };
-    case types.ADD_TODO:
-      const newTodo = {
-        id: uuidv4(),
-        task: action.payload,
-        nestedTask: [],
-        completed: false,
-      };
-      const addTodo = [...state.todos, newTodo];
+    case types.ADD_TODO_SAGA:
+      const addTodo = [...state.todos, action.payload];
       return {
         ...state,
         todos: addTodo,
       };
-    case types.REMOVE_TODO: {
-      const removeTodo = state.todos.filter((t) => t.id !== action.payload.id);
-      console.log(removeTodo);
-
+    case types.REMOVE_TODO_SAGA: {
+      const removeTodo = state.todos.filter((t) => t.id !== action.payload);
       return {
         ...state,
         todos: removeTodo,
       };
     }
-    case types.UPDATE_TODO: {
+    case types.UPDATE_TODO_SAGA: {
       const updateTodo = state.todos.map((t) => {
         if (t.id === action.payload.id) {
           return { ...t, task: action.payload.updateTask };

@@ -1,11 +1,18 @@
 import './Input.css'
 import {React, useState} from 'react'
+import { v4 as uuidv4 } from "uuid";
 
 export const Input = ({createTode}) => {
     const [task,setTask]=useState("");
+    const newTodo = {
+        id: uuidv4(),
+        task: task,
+        nestedTask: [],
+        completed: false,
+      }
     const handleSubmit =(e)=>{
         e.preventDefault();
-        createTode(task);
+        createTode(newTodo);
         setTask("")
 
     };
